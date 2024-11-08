@@ -20,7 +20,7 @@ const KEY = '44b94982';
           try {
             setIsLoading(true);
             setError("");
-          const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal : controller.signal});
+          const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal : controller.signal});
     
         // fetch()
         // .then((res) => res.json())

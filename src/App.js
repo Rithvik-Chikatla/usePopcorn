@@ -25,7 +25,6 @@ export default function App() {
   //   const storedValue = localStorage.getItem('watched');
   //   return JSON.parse(storedValue);
   // });
-  const tempQuery = "fda";
 
   // useEffect(function() {
   //   console.log('a', [])
@@ -129,7 +128,7 @@ function Logo() {
 function NumResults({movies}) {
   return (
   <p className="num-results">
-          Found <strong>{movies.length != 0 ? movies.length : 0}</strong> results
+          Found <strong>{movies.length !== 0 ? movies.length : 0}</strong> results
         </p>
   )
 }
@@ -265,7 +264,7 @@ function MovieDetails({selectedId, onCloseMovie, onAddWatched, watched}) {
   const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating;
 
 
-  const {Title : title, Year : year, Poster : poster, Runtime : runtime, Actors : actors, Director : director, Genre : genre, imdbRating, Plot : plot, Released : released} = movie;
+  const {Title : title, Year : year, Poster : poster, Runtime : runtime, Actors : actors, Director : director, imdbRating, Plot : plot, Released : released} = movie;
 
   // console.log(title, year);
   
@@ -304,7 +303,7 @@ function MovieDetails({selectedId, onCloseMovie, onAddWatched, watched}) {
   useEffect(function() {
     async function getMovieDetails() {
       setIsLoading(true);
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`);
+      const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`);
       const data = await res.json();
       setMovie(data);
       setIsLoading(false);
